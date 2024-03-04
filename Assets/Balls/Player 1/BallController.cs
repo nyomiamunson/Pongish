@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BallController : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
 
     public ScoreController scoreController;
+    public ScoreController2 scoreController2;
+    public GameOver gameOver;
 
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
+    private bool gameEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +31,11 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Maintain speed by normalizing velocity every frame
-        rb.velocity = rb.velocity.normalized * speed;
+        if (!gameEnded)
+        {
+            // Maintain speed by normalizing velocity every frame
+            rb.velocity = rb.velocity.normalized * speed;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,9 +44,21 @@ public class BallController : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); //Get a reference to our AudioSource
         audioSource.Play();
 
-        if (collision.gameObject.CompareTag("Paddle"))
+        if (!gameEnded && collision.gameObject.CompareTag("Paddle"))
         {
             scoreController.Player1Scored();
+            if(scoreController.player1Score == 50 || scoreController2.player2Score == 50)
+            {
+                EndGame();
+            }
         }
+    }
+
+    void EndGame()
+    {
+        gameEnded = true;
+
+        //Show the Game Over text
+        gameOver.ShowGameOver();
     }
 }

@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BallController2 : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
 
+    public ScoreController scoreController;
     public ScoreController2 scoreController2;
+    public GameOver gameOver;
 
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
+    private bool gameEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +41,21 @@ public class BallController2 : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); //Get a reference to our AudioSource
         audioSource.Play();
 
-        if (collision.gameObject.CompareTag("Paddle"))
+        if (!gameEnded && collision.gameObject.CompareTag("Paddle"))
         {
             scoreController2.Player2Scored();
+            if (scoreController.player1Score == 50 || scoreController2.player2Score == 50)
+            {
+                EndGame();
+            }
         }
+    }
+
+    void EndGame()
+    {
+        gameEnded = true;
+
+        //Show the Game Over text
+        gameOver.ShowGameOver();
     }
 }

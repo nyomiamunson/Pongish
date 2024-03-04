@@ -4,7 +4,7 @@ using TMPro;
 public class ScoreController2 : MonoBehaviour
 {
     public TextMeshProUGUI score2Text;
-    private int player2Score = 0;
+    public int player2Score = 0;
 
     void Start()
     {
