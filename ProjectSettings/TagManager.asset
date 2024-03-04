@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player1Score
   - Player2Score
+  - Paddle
   layers:
   - Default
   - TransparentFX

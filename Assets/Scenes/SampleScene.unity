@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  scoreController2: {fileID: 0}
+  scoreController2: {fileID: 782266566}
 --- !u!50 &782266563
 Rigidbody2D:
   serializedVersion: 4
@@ -1663,7 +1663,7 @@ GameObject:
   - component: {fileID: 1592645148}
   m_Layer: 0
   m_Name: Left Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1957,7 +1957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  scoreController: {fileID: 0}
+  scoreController: {fileID: 1799128324}
 --- !u!58 &1799128320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2118,7 +2118,7 @@ GameObject:
   - component: {fileID: 1827700487}
   m_Layer: 0
   m_Name: Right Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

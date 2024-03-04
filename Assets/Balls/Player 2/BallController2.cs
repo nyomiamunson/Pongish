@@ -37,7 +37,7 @@ public class BallController2 : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); //Get a reference to our AudioSource
         audioSource.Play();
 
-        if (collision.gameObject.CompareTag("Player2Score"))
+        if (collision.gameObject.CompareTag("Paddle"))
         {
             scoreController2.Player2Scored();
         }
